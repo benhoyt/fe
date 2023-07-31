@@ -1,0 +1,63 @@
+\ ascii.key  --  ascii only key codes
+
+key-codes 2 = [if]			\ only control keys
+also key-table definitions
+warnings off				\ since ' + - etc. are already defined
+
+\ ASCII key codes; you may have to modify this table to suit your keyboard
+\	Alt  Ctrl Shft Nrm
+	EEEE EEEE 007E 0060 make-key `
+	EEEE EEEE 0021 0031 make-key 1
+	EEEE 0000 0040 0032 make-key 2
+	EEEE EEEE 0023 0033 make-key 3
+	EEEE EEEE 0024 0034 make-key 4
+	EEEE EEEE 0025 0035 make-key 5
+	EEEE 001E 005E 0036 make-key 6
+	EEEE EEEE 0026 0037 make-key 7
+	EEEE EEEE 002A 0038 make-key 8
+	EEEE EEEE 0028 0039 make-key 9
+	EEEE EEEE 0029 0030 make-key 0
+	EEEE 001F 005F 002D make-key -
+	EEEE EEEE 002B 003D make-key =
+	EEEE 001C 007C 005C make-key \
+	EEEE 001B 007B 005B make-key [
+	EEEE 001D 007D 005D make-key ]
+	EEEE EEEE 003A 003B make-key ;
+	EEEE EEEE 0022 0027 make-key '
+	EEEE EEEE 003C 002C make-key ,
+	EEEE EEEE 003E 002E make-key .
+	EEEE EEEE 003F 002F make-key /
+	EEEE 0001 0041 0061 make-key A
+	EEEE 0002 0042 0062 make-key B
+	EEEE 0003 0043 0063 make-key C
+	EEEE 0004 0044 0064 make-key D
+	EEEE 0005 0045 0065 make-key E
+	EEEE 0006 0046 0066 make-key F
+	EEEE 0007 0047 0067 make-key G
+	EEEE 0008 0048 0068 make-key H
+	EEEE 0009 0049 0069 make-key I
+	EEEE 000A 004A 006A make-key J
+	EEEE 000B 004B 006B make-key K
+	EEEE 000C 004C 006C make-key L
+	EEEE 000D 004D 006D make-key M
+	EEEE 000E 004E 006E make-key N
+	EEEE 000F 004F 006F make-key O
+	EEEE 0010 0050 0070 make-key P
+	EEEE 0011 0051 0071 make-key Q
+	EEEE 0012 0052 0072 make-key R
+	EEEE 0013 0053 0073 make-key S
+	EEEE 0014 0054 0074 make-key T
+	EEEE 0015 0055 0075 make-key U
+	EEEE 0016 0056 0076 make-key V
+	EEEE 0017 0057 0077 make-key W
+	EEEE 0018 0058 0078 make-key X
+	EEEE 0019 0059 0079 make-key Y
+	EEEE 001A 005A 007A make-key Z
+	EEEE 0020 0020 0020 make-key Space
+	EEEE 007F 0008 0008 make-key BS
+	EEEE 0009 0009 0009 make-key Tab
+	EEEE 001B 001B 001B make-key Esc
+	EEEE 000A 000D 000D make-key Enter
+previous definitions
+warnings on
+[then]

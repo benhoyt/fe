@@ -1,0 +1,98 @@
+\ FE  --  Configuration file                    06-01-99 20:55:06
+
+0 [if]
+Order of configuration
+    first: this configuration file
+    then:  do file extension words  e.g.  .asm  or  .f
+    then:  load files given as command line arguments as they occur
+         -evaluate the line following a '-e'
+
+Note: the name of the configuration file is a counted string whose address
+    is in the value config-file
+    The default configuration file name is fe.cfg
+
+Note: FE tries to locate fe.cfg in the current directory first
+    then it tries the environment variable FE_CFG
+    finally it tries the directory where fe.exe is located
+
+[then]
+
+also editor
+
+hex
+\ Configure colours
+    CE                  \ status text
+    71                  \ marked text on dotlp
+    71                  \ marked text
+    1F                  \ text on dotlp
+    17                  \ normal text
+    set-colours
+decimal
+
+\ Backup interval in seconds; 180 is default, i.e. 3 minutes
+15 60 * set-backup-interval     \ I prefer 15 minutes
+
+\ Save file using tabs to replace a full tabstop of spaces
+\ true to save-with-tabs        \ default is true
+
+\ Detab file when reading
+\ false to detab-on-read        \ default is false
+
+\ Use hard tabs internally
+\ true to use-hard-tabs         \ default is true
+
+\ Char to use to display hard tab
+\ bl tab-disp c!                \ default is show tab as space
+\ 250 tab-disp c!               \ show tab as small dot
+\ 26 tab-disp c!                \ show tab as arrow
+
+\ # rows to keep on page up and page down
+\ 0 to keep-rows                \ 0 is default
+
+\ Set margins for word wrap
+\ 76 set-default-right-margin   \ 76 is default
+\ 1 set-default-left-margin     \ 1 is default
+
+
+\ File specific configuration
+get-current                     \ save the current compiling word list
+file-extensions set-current     \ set new compiling word list
+get-order file-extensions swap 1+ set-order
+warnings off
+
+\ File extension routines go here, each acts only upon the file just opened
+
+: .f  4 set-tabsize enable-auto-indent ;
+' .f alias .4
+' .f alias .w32
+' .f alias .i32
+' .f alias .f32
+' .f alias .seq
+' .f alias .str
+' .f alias .fs
+' .f alias .4th
+' .f alias .fth
+
+: .asm  8 set-tabsize enable-auto-indent ;
+
+: .c  4 set-tabsize enable-auto-indent ;
+' .c alias .h
+
+: .txt  4 set-tabsize  disable-auto-indent
+        false to use-hard-tabs  true to detab-on-read
+        false to save-with-tabs ;
+' .txt alias .doc
+
+\ : .scr ;  convert block file to text; NOT YET IMPLEMENTED
+\ : .blk ;
+
+\ Default file extension, used if no other default applies
+: .default .txt ;
+
+get-order nip 1- set-order set-current
+
+\ End of file extension routines
+
+warnings on
+
+only forth also editor

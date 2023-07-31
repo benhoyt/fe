@@ -1,0 +1,66 @@
+To do in FE
+
+Forth stdout appended to a text buffer
+    e.g. 1000 primes  will catch the primes up to 1000 in a buffer
+
+System commands stdout and stderr appended to a text buffer
+    e.g. dir output caught in a text buffer
+
+Execute the line/block/buffer as system commands (bash, or bat file)
+    output returned in text buffer
+
+Cursor vertical mode
+    extend lines when insert/replace char or string, cut/dup block
+
+Column marking
+    cursor vertically
+
+Do windowing; overlapping windows allowed?
+    active window is on top
+    display border for all windows smaller than full screen
+
+Line input should be done in a one line window, keep history
+    buffer for each:
+        file names
+        search & replace strings
+
+Regular expressions for search?
+    now have only simple line ends
+
+Marked block functions
+    edit marked filename(s)  ^KE
+    do macro in block
+    search only in block
+
+Column block stuff
+        cut copy paste write
+        shift left &/or right
+        fill
+
+How to do incremental backup of changed lines; ?
+    append line# and new contents of every changed line to the backup file
+    delete the backup file when the new file is saved
+    Using this backup file and the original file - which is as yet unchanged
+        the new file can be constructed:
+        read original file
+        read a line from backup file,
+        goto the line
+        delete the line
+        insert the line from the backup file
+
+Line input recalling history should position cursor at end
+    and treat the line as a normal edit line
+
+History lists for file loading, search, replace, rename
+    these should be buffers edited with normal edit functions
+    but don't allow line split or join
+
+File name completion when requesting file name
+    depends on allow-wild-cards
+
+Paste buffers numbered? with active number on status line?
+
+fe.prf a profile to include bookmarks and current files and positions
+    it is saved by normal exit  Alt-X and Ctrl-K Ctrl-X
+    it is read when starting FE without any parameters
+        all current files are read and positions located

@@ -1,0 +1,4 @@
+BUGS in FE
+
+wrap doesn't handle tabs in a paragraph properly
+

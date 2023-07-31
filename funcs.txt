@@ -1,0 +1,723 @@
+Functions in FE available to the user; listed by source file
+
+Functions with no parameters may be bound to keys. See bios.key and
+ctrl.key for examples.
+
+block.f
+    set-mark ( -- )
+        Set the mark at the cursor location and enable highlighting
+
+    toggle-mark ( -- )
+        This is actually a toggle; If highlighting is enabled, it disabled.
+        If highlighting is disabled it is enabled. The location of the mark
+        is not changed
+
+    cut ( -- )
+        Delete the marked (highlighted) text. It is placed in a paste
+        buffer. The last three marked deletions are kept. They may be
+        pasted using paste
+
+    paste ( -- )
+        Insert the marked text most recently deleted. The previous two
+        deletions may be inserted instead by following paste by
+        undelete-prev
+
+    duplicate ( -- )
+        Duplicate the marked text by copying it to a past buffer. The marked
+        text is not deleted
+
+    insert-file ( -- )
+        Prompt for a file name and insert it at the cursor
+
+    write-block ( -- )
+        Prompt for a file name and write the marked text to that file. This
+        will overwrite the file if it already exists.
+
+    include-block ( -- )
+	Do a forth INCLUDE on the marked text or the current line if none is
+	marked.
+
+    include-buffer ( -- )
+	Do a forth INCLUDE of the whole text buffer.
+
+buf.f
+
+    NOTE: modes and tabsize apply to each buffer independently
+    modes are: auto-indent overwrite word-wrap read-only line-draw
+
+    show-marked? ( -- flag )
+        Is highlighting on?
+
+    auto-indent? ( -- flag )
+        Is auto-indent mode enabled?
+
+    enable-auto-indent ( -- )
+        Enable auto indent mode
+
+    disable-auto-indent ( -- )
+        Disable auto indent mode
+
+    toggle-auto-indent ( -- )
+        Toggle auto-indent mode
+
+    overwrite? ( -- flag )
+        Is overwrite mode enabled?
+
+    toggle-overwrite ( -- )
+        Toggle overwrite mode
+
+    enable-overwrite ( -- )
+        Enable overwrite mode
+
+    disable-overwrite ( -- )
+        Disable overwrite mode
+
+    word-wrap? ( -- flag )
+        Is word-wrap mode enabled. NOTE: not yet implemented
+
+    toggle-word-wrap ( -- )
+        Toggle word-wrap mode
+
+    enable-word-wrap ( -- )
+        Enable word wrap mode
+
+    disable-word-wrap
+        Disable word wrap mode
+
+    read-only? ( -- flag )
+        Is read-only mode enabled?
+
+    toggle-read-only ( -- )
+        Toggle read-only mode
+
+    enable-read-only ( -- )
+        Enable read-only mode
+
+    disable-read-only ( -- )
+        Disable read-only mode
+
+line.f
+    c-char ( -- char )
+        return the character at the cursor location
+
+cmnt.f
+    trim-dotline ( -- )
+        remove whitespace from end of cursor line
+
+    fix-comment ( -- )
+        place a \ as near as possible to column 41
+
+cursor.f
+    c-bol ( -- )
+        move cursor to beginning of line
+
+    c-eol ( -- )
+        move cursor to end of line
+
+    c-bof ( -- )
+        move cursor to beginning of file
+
+    c-eof ( -- )
+        move cursor to end of file
+
+    goto-line# ( n -- )
+        move cursor to beginning of given line
+
+    str>n ( addr cnt -- n )
+        convert string to integer
+
+    goto-line ( -- )
+        prompt for line number and then move cursor to it
+
+    c-down ( -- )
+        move cursor down
+
+    c-up ( -- )
+        move cursor up
+
+    c-tos ( -- )
+        move cursor to top of screen
+
+    c-bos ( -- )
+        move cursor to bottom of screen
+
+    c-lock-scroll-down ( -- )
+        scroll text down keeping cursor on the same row of screen
+
+    c-lock-scroll-up ( -- )
+        scroll text up keeping cursor on the same row of screen
+
+    c-scroll-down ( -- )
+        scroll text down keeping cursor at the same line of text
+
+    c-scroll-up ( -- )
+        scroll text up keeping cursor at the same line of text
+
+    c-page-down ( -- )
+        move cursor down a page of text less the number of lines in keep-rows
+
+    c-page-up ( -- )
+        move cursor up a page of text less the number of lines in keep-rows
+
+    c-right ( -- )
+        move cursor right
+
+    c-left ( -- )
+        move cursor left
+
+    c-word-right ( -- )
+        move cursor one word to the right
+
+    c-word-left ( -- )
+        move cursor one word to the left
+
+    c-col ( n -- )
+        move cursor to column n
+
+    goto-marker0 ( -- )
+        move cursor to marker 0
+
+    goto-marker1 ( -- )
+        move cursor to marker 1
+
+    goto-marker2 ( -- )
+        move cursor to marker 2
+
+    goto-marker3 ( -- )
+        move cursor to marker 3
+
+    goto-marker4 ( -- )
+        move cursor to marker 4
+
+    goto-marker5 ( -- )
+        move cursor to marker 5
+
+    goto-marker6 ( -- )
+        move cursor to marker 6
+
+    goto-marker7 ( -- )
+        move cursor to marker 7
+
+    goto-marker8 ( -- )
+        move cursor to marker 8
+
+    goto-marker9 ( -- )
+        move cursor to marker 9
+
+    set-marker0 ( -- )
+        set marker 0 to present cursor location
+    set-marker1 ( -- )
+        set marker 1 to present cursor location
+
+    set-marker2 ( -- )
+        set marker 2 to present cursor location
+
+    set-marker3 ( -- )
+        set marker 3 to present cursor location
+
+    set-marker4 ( -- )
+        set marker 4 to present cursor location
+
+    set-marker5 ( -- )
+        set marker 5 to present cursor location
+
+    set-marker6 ( -- )
+        set marker 6 to present cursor location
+
+    set-marker7 ( -- )
+        set marker 7 to present cursor location
+
+    set-marker8 ( -- )
+        set marker 8 to present cursor location
+
+    set-marker9 ( -- )
+        set marker 9 to present cursor location
+
+disp.f
+    set-colours ( border status mrkdot mrk dot nrm -- )
+        set the status line, marked text, cursor line text,
+        and normal text colours
+
+    tab-disp ( -- addr ) variable
+        hold char to display a tab; default is bl
+
+    col# ( -- n )
+        return cursor column number
+
+    dotline# ( -- n )
+        return cursor line number
+
+    display ( -- )
+        display the screen
+
+    restore-screen ( -- )
+        position cursor, set colour for full video window -- used to return
+        forth to
+
+draw.f
+    d-at ( -- )
+        put the proper line graphic char at the cursor location
+
+    d-sl ( -- )
+        draw single left
+
+    d-dl ( -- )
+        draw double left
+
+    d-sr ( -- )
+        draw single right
+
+    d-dr ( -- )
+        draw double right
+
+    d-su ( -- )
+        draw single up
+
+    d-du ( -- )
+        draw double up
+
+    d-sd ( -- )
+        draw single down
+
+    d-dd ( -- )
+        draw double down
+
+    drawkeys ( -- addr ) variable
+        varible to hold pointer to draw key bindings
+
+    enable-draw ( -- )
+        enable drawing mode
+
+    disable-draw ( -- )
+        disable drawing mode
+
+    toggle-draw ( -- )
+        toggle drawing mode
+
+edit.f
+    insert-chars ( char n -- )
+        insert n chars at cursor
+
+    insert-char ( char -- )
+        insert 1 char at cursor
+
+    insert-string ( addr cnt -- )
+        insert a string at cursor
+
+    new-line  ( -- )
+        split the current line at the cursor and advance the cursor
+
+    insert-new-line ( -- )
+        split the current line
+
+    overwrite-char ( char -- )
+        replace the char at the cursor
+
+    stuff-char ( char -- )
+        force the next key to be inserted into text
+
+    tab ( -- )
+        insert mode or end of line: insert spaces until next tab stop
+        overwrite mode: move cursor right to next tab stop
+
+    back-tab ( -- )
+        move cursor left to previous tab stop
+
+    set-tabsize ( n -- )
+        set the tab size for further tabs, this does not affect
+        previously inserted tabs (they have been converted to spaces)
+
+    tabsize? ( -- n )
+        return the current tabsize
+
+    repeat-key ( -- )
+        prompt for number then for a key to be repeated, for bound keys
+        this repeatedly executes the function
+
+    delete-chars ( n -- )
+        delete n chars
+
+    delete-char ( -- )
+        delete 1 char
+
+    delete-left ( -- )
+        delete one char to left of cursor
+
+    delete-word ( -- )
+        delete word to right of cursor
+
+    word>upper ( -- )
+        convert word to upper case
+
+    word>lower ( -- )
+        convert word to lower case
+
+    delete-eol ( -- )
+        delete to end of line
+
+    smart-delete-eol ( -- )
+        if at beginning of line, delete the whole line
+        otherwise delete to end of line
+
+    delete-line ( -- )
+        delete the whole line
+
+    undelete ( -- )
+        undelete the last text deleted
+
+    undelete-prev ( -- )
+        undelete the previously deleted text, this may be repeated
+        to get the text deleted farther back. If the previous action
+        was a paste, then undelete-prev will paste text deleted
+        further back
+
+    indent-line ( -- )
+        increase indent on current line
+
+    undent-line ( -- )
+        decrease indent on current line
+
+    block>upper
+        upper case all words in block
+
+    block>lower
+        lower case all words in block
+
+    indent-block ( -- )
+        increase indent on all lines in marked block
+
+    undent-block ( -- )
+        decrease indent on all lines in marked block
+
+    switch/read-file ( $fname -- )
+        display the buffer containing $fname file if it is already in
+        memory, otherwise read and display the file
+
+    _get-files ( "name ..." -- )
+        read files listed
+
+    get-files ( -- )
+        prompt for list of file name and then call _get-files
+
+    view-file ( $fname -- )
+        same as switch/read-file except the file is put in read-only mode
+
+    view-files ( -- )
+        same as get-file except the files are put in read-only mode
+
+    save-buffer ( -- )
+        save the current buffer to disk
+
+    save-all ( -- )
+	save all the buffers to disk
+
+    save-exit ( -- )
+        save the current buffer to disk and delete the buffer, this will
+        exit the editor if there are no more buffers
+
+    save-exit-all ( -- )
+        save all the buffers and exit the editor
+
+    nosave-exit ( -- )
+        delete the buffer without saving, if the file was changed,
+        confirmation is requested
+
+    buffer-rename ( $fname -- )
+        rename the current buffer
+
+    rename-buffer ( -- )
+        prompt for file name and then call buffer-rename
+
+    include-buffer ( "name" -- )
+        include the current buffer as forth source code
+
+    bload ( "name" -- )
+        alias for include-buffer
+
+file.f
+    set-backup-interval ( n -- )
+        set the backup interval to n seconds
+
+    backup-interval? ( -- n )
+        return the backup interval in seconds
+
+keybind.f
+    edkeys
+	variable pointer to chain of editor key bindings
+
+    replace-keys ( chain -- )
+        make chain the first key list to search array
+
+    only-keys ( chain -- )
+        make chain the only key list to search array
+
+    also-keys ( chain -- )
+        add chain to search array
+
+    prev-keys
+        remove the first key list from search array
+
+    forth-keys ( -- )
+        pointer to list of keybindings for forth
+
+    binding ( "name" -- )
+        set pointer to chain of bound keys
+
+    bind: ( func "keys" -- 0 )
+        bind the function to following keys
+
+    ,keys ( scp1 scp2 ... n -- )
+        compile n scan codes
+
+line-ed.f
+    l-delete-eol
+        delete to eol
+
+    l-delete-char
+        delete char at cursor
+
+    l-bol ( -- )
+        cursor to beginning of line
+
+    l-eol
+        cursor to end of line
+
+    l-left
+        cursor left
+
+    l-delete-left
+        delete char left
+
+    l-right
+        cursor right
+
+    l-enter
+        accept line and return
+
+    l-esc
+        escape and return
+
+    l-stuff
+        insert next char regardless
+
+linein.f
+    lineinkeys
+	variable pointer to chain of line input key bindings
+
+    +linein ( -- )
+        display and edit a line in ed-tib
+
+    linein ( -- )
+        input and edit a line to ed-tib
+
+macro.f
+    define-macro ( -- )
+
+main.f
+    exit-editor ( -- )
+        exit the editor
+
+    config-file ( -- ptr )
+        a value that points to a string containing the file name
+        of the configuration file read at start-up
+
+    edit ( ["filename"] -- )
+        enter edit mode from the forth command line
+
+misc.f
+    .date ( -- )
+        type the time
+
+    .time ( -- )
+        type the time
+
+    date&time ( -- )
+        insert date and time
+
+    eob? ( -- t/f )
+        are we at the end of the buffer?
+
+    cur-line# ( -- n )
+        return current line number; alias for dotline#
+
+    #cols ( -- n )
+        return the number of columns in current line
+
+    buffer-name ( -- addr cnt )
+        return the name of the current buffer
+
+    date&time-stamp ( -- )
+        insert a date and time stamp in column 61
+
+    to-shell ( -- )
+        execute an OS shell
+
+    _filter-block ( addr u -- )
+        filter hilighted block through system command in string addr u
+
+    filter ( "syscmd" -- )
+        filter whole buffer or hilighted block through syscmd
+
+    do-command ( addr u -- )
+        insert results of system command in string addr u into buffer at dot
+
+    command ( "cmd" -- )
+        parse for cmd and then do-command
+
+    script ( -- )       NOT IMPLEMENTED
+        execute buffer or block as a shell script
+
+search.f
+    ksearch-again ( -- )
+        search for the next occurrence of the previous search string
+
+    ksearch ( -- )
+        prompt for a search string and search for the next occurrence
+        a Ctrl-[ at the beginning of the search string means beginning of line
+        a Ctrl-[ at the end of the search string means end of line
+        Ctrl-[ can be inserted using:  Ctrl-V Ctrl-[
+
+    kisearch ( -- )
+        same as above but do a case insensitive search
+
+    kreplace ( -- )
+        prompt for a search string and a replace string and replace
+        each occurrence of the former with the latter
+
+    kquery-replace ( -- )
+        do as above but prompt before each replacement
+
+vars.f
+    screen-cols ( -- n ) value
+        value giving the number of screen columns
+
+    screen-rows ( -- n ) value
+        value giving the number of screen rows
+
+    tab-ch ( -- n ) value
+        the tab character
+
+    lf-ch ( -- n ) value
+        the line fee character
+
+    end-line-char ( -- n ) value
+        virtual end of line character used internally
+
+    cmnt-col ( -- n ) value
+        column in which comments are started
+
+    tabmax ( -- n ) constant
+        maximum value of tabsize
+
+    l-limit ( -- n ) constant
+        maximum length of line
+
+    editing? ( -- flag ) value
+	value containing state of editing mode
+
+    drawing? ( -- flag ) value
+        value containing state of drawing mode
+
+    trim-line? ( -- flag ) value
+        value indicating whether to delete white space from the end of
+        lines when saving a file
+
+    defining? ( -- flag ) value
+        value indicating that a macro is being defined
+
+    auto-indent ( -- n ) value
+        value holding the state of auto-indent mode
+
+    read-tabsize ( -- n ) value
+        value containing the maximum line length when reading a file, if
+        a line is longer than this it will be split
+
+    save-with-tabs ( -- flag ) value
+        value indicating that files will be saved with tabs replacing spaces
+
+    detab-on-read ( -- flag ) value
+        value indicating that files will be detabbed when read
+
+    use-hard-tabs ( -- flag ) value
+        tab key inserts hard tabs
+
+    #rows-to-keep ( -- n ) value
+        value giving the number of rows to keep on screen during
+        page-down and page-up
+
+    default-right-margin ( -- n ) value
+        the default right margin for opening new files
+
+    default-left-margin ( -- n ) value
+        the default left margin for opening new files
+
+    indent-size ( -- n ) value
+        size of paragraph indent
+
+    file-extensions ( -- wid ) value
+        return wordlist containing file extensions which are used to
+        initialise buffers for various file types
+
+locate.f
+    source-locate ( -- )
+        prompt for a word and then read the file containing the source
+        code for that word and position the cursor at the definition of
+        the word
+
+    auto-locate ( -- )
+        view the source code of the word under the cursor
+
+    locate ( "name" -- )
+        parse name and then view its source code
+
+wind.f
+    prev-buffer ( -- )
+        switch to the previous buffer in the ring
+
+    next-buffer ( -- )
+        switch to the next buffer in the ring
+
+wrap.f
+    word-wrap ( -- )
+        wrap the current paragraph to the left margin
+
+    left-justify ( -- )
+        left justify the current line and the rest of the paragraph
+
+    hanging-indent ( -- )
+        left justify current line, then indent rest of paragraph
+
+    indent ( -- )
+        indent current line and rest of paragraph
+
+    auto-word-wrap ( -- )
+        a deferred word used in the main edit loop to do automatic paragraph word
+        wrap set to _auto-word-wrap which does the work
+
+    set-r-margin ( -- )
+        set right margin to current cursor location
+
+    set-right-margin ( n -- )
+        set right margin to n
+
+    set-default-right-margin ( n -- )
+        set default right margin to n
+
+    set-l-margin ( -- )
+        set left margin to current cursor location
+
+    set-left-margin ( n -- )
+        set left margin to n
+
+    set-default-left-margin ( n -- )
+        set default left margin to n
+
+clip.f
+    clip-paste ( -- )
+        paste from windows clipboard
+
+    clip-copy ( -- )
+        copy to windows clipboard
+
+    clip-cut ( -- )
+        copy to windows clipboard then delete from text
