@@ -1,3 +1,12 @@
+Note from Ben: this is the text editor my Dad wrote in Forth in the
+1990s. He originally wrote it to run under his own Forth compiler, but
+it looks like it runs on ANS-compatible Forths like Gforth as well.
+
+I grew up coding with this! I'm uploading it here with his permission.
+
+----------------------------------------------------------------------
+
+
                Forth Editor by Bruce Hoyt
 
 
