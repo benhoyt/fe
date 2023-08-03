@@ -1,25 +1,21 @@
-Note from Ben: this is the text editor my Dad wrote in Forth in the
-1990s. He originally wrote it to run under his own Forth compiler, but
-it looks like it runs on ANS-compatible Forths like Gforth as well.
+
+# FE (Bruce Hoyt's Forth Editor)
+
+Note from Ben: this is the text editor my Dad wrote in Forth in the 1990s. He originally wrote it to run under his own Forth compiler, but it looks like it runs on ANS-compatible Forths like Gforth as well.
 
 I grew up coding with this! I'm uploading it here with his permission.
 
-Thanks to Dad's TFL (Token-thread Forth for Linux), you can run this
-on modern Linux. I'm running it on Ubuntu Linux 22.04. The "fe" binary
-is included here, so to run it, type "./fe file ...", for example:
+Thanks to Dad's TFL (Token-thread Forth for Linux), you can even run this on modern Linux. I'm running it on Ubuntu Linux 22.04. The `fe` binary is included here, so to run it, type `./fe filename`, for example:
 
-$ ./fe fe.key
+    ./fe fe.key
 
-To quit, press Alt-Q. You can also escape to a Forth prompt by
-pressing Esc. Try entering "1 2 + . <Enter>". To go back to editing
-mode, type "edit". Or type "bye" to exit.
+To quit, press `Alt-Q`. You can also escape to a Forth prompt by pressing `Esc`. Try entering `1 2 + . <Enter>`. To go back to editing mode, type `edit`. Or type `bye` to exit.
 
-PRE-REQUISITES: "fe" is a 32-bit i386 ELF binary, so you'll need the
-i386 version of libc6 installed. On Ubuntu you can do that with:
+**Pre-requisites**: `fe` is a 32-bit i386 ELF binary, so you'll need the i386 version of libc6 installed. On Ubuntu you can do that with:
 
-$ sudo apt install libc6-i386
+    sudo apt install libc6-i386
 
-The specific .so files it uses are (libc6-i386 installs these):
+The specific `.so` files it uses are (libc6-i386 installs these):
 
     libc.so.6
     libdl.so.2
@@ -27,7 +23,7 @@ The specific .so files it uses are (libc6-i386 installs these):
 
 ----------------------------------------------------------------------
 
-
+```
                Forth Editor by Bruce Hoyt
 
 
@@ -196,3 +192,4 @@ in FE.KEY.
 Bruce Hoyt, May 2001
 Hastings, New Zealand
 bhoyt@globe.co.nz
+```
