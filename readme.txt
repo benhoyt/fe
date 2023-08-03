@@ -4,6 +4,27 @@ it looks like it runs on ANS-compatible Forths like Gforth as well.
 
 I grew up coding with this! I'm uploading it here with his permission.
 
+Thanks to Dad's TFL (Token-thread Forth for Linux), you can run this
+on modern Linux. I'm running it on Ubuntu Linux 22.04. The "fe" binary
+is included here, so to run it, type "./fe file ...", for example:
+
+$ ./fe fe.key
+
+To quit, press Alt-Q. You can also escape to a Forth prompt by
+pressing Esc. Try entering "1 2 + . <Enter>". To go back to editing
+mode, type "edit". Or type "bye" to exit.
+
+PRE-REQUISITES: "fe" is a 32-bit i386 ELF binary, so you'll need the
+i386 version of libc6 installed. On Ubuntu you can do that with:
+
+$ sudo apt install libc6-i386
+
+The specific .so files it uses are (libc6-i386 installs these):
+
+    libc.so.6
+    libdl.so.2
+    ld-linux.so.2
+
 ----------------------------------------------------------------------
 
 
